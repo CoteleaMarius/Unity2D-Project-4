@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    private float _moveH, _moveV;
+    public float moveH, moveV;
     [SerializeField] private float moveSpeed = 1.0f;
 
     private void Awake()
@@ -13,9 +13,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _moveH = Input.GetAxis("Horizontal") * moveSpeed;
-        _moveV = Input.GetAxis("Vertical") * moveSpeed;
-        Vector2 direction = new Vector2(_moveH, _moveV);
+        moveH = Input.GetAxis("Horizontal") * moveSpeed;
+        moveV = Input.GetAxis("Vertical") * moveSpeed;
+        Vector2 direction = new Vector2(moveH, moveV);
         _rb.velocity = direction;
         FindObjectOfType<PlayerAnimation>().SetDirection(direction);
     }
